@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <title>数据绑定语法</title>
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://v3.bootcss.com/assets/css/docs.min.css">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js"></script>
+    <style>
+    body {
+        font-family: "Helvetica Neue", Helvetica, Microsoft Yahei, Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif;
+    }
+    </style>
+</head>
+
+<body id="vue">
+    <div class="container">
+        <div class="row">
+            <h3>动态改变data.msg的值</h3>
+            <!-- 改变data.msg的值 -->
+            <form>
+                <input class="form-control" v-model="msg">
+            </form>
+            <h3>文本插值</h3>
+            <div class="bs-example">
+                <!-- 文本插值双向 -->
+                <p>文本插值双向:<span class="text-success">{{msg}}</span></p>
+                <!-- 文本插值单向 -->
+                <p>文本插值单向:<span class="text-success">{{*msg}}</span></p>
+            </div>
+            <!-- 表达式 -->
+            <h3>绑定表达式</h3>
+            <div class="bs-example">
+                <p>字符拼接:<span class="text-success">{{msg+'拼接字符'}}</span></p>
+                <p>判定案例:<span class="text-success">{{msg?'存在msg':'不存在msg'}}</span></p>
+                <p>倒序案例:<span class="text-success">{{ msg.split('').reverse().join('') }}</span></p>
+            </div>
+            <h3>过滤器</h3>
+            <div class="bs-example">
+                <p>首字母大写|过滤器:<span class="text-success">{{msgenglish | capitalize }}</span></p>
+            </div>
+            <h3>指令</h3>
+            <h5>指令的值限定为绑定表达式,那么过滤器也可以使用</h5>
+            <div class="bs-example">
+                <p>v-if:指令将根据表达式值的真假删除/插入元素</p>
+                <p v-if="msg" class="text-success">如果存在msg的值则显示</p>
+                <p>v-bind:指令用于响应地更新HTML特性</p>
+                <p><a class="text-success" v-bind:href="msg">v-bind:href,对html的href属性进行绑定</a></p>
+                <!-- 支持缩写 -->
+                <!-- <p><a class="text-success" :href="msg">v-bind:href,对html的href属性进行绑定</a></p> -->
+                <p>v-on:用于监听DOM事件</p>
+                <span class="text-success" v-on:click="bindon">on绑定click事件</span>
+                <!-- 支持缩写 -->
+                 <!-- <span class="text-success" @click="bindon">on绑定click事件</span> -->
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+var data = {
+    msg: '这是一个测试数据',
+    msgenglish: 'this is a test data',
+};
+var vm = new Vue({
+    el: "#vue",
+    data: data,
+    methods: {
+        bindon: function() {
+            alert('绑定成功');
+        }
+    },
+});
+</script>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <title>计算属性</title>
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://v3.bootcss.com/assets/css/docs.min.css">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js"></script>
+    <style>
+    body {
+        font-family: "Helvetica Neue", Helvetica, Microsoft Yahei, Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif;
+    }
+    </style>
+</head>
+
+<body id="vue">
+    <div class="container">
+        <div class="row">
+            <h3>动态改变data.msg的值</h3>
+            <!-- 改变data.msg的值 -->
+            <form>
+                <input class="form-control" v-model="a">
+            </form>
+            <!-- 计算属性 -->
+            <h3>计算属性</h3>
+            <p>computed相对于watch,可以对data属性进行更多的监听(依赖),任一的改变都会触发computed</p>
+            <div class="bs-example">
+                 a={{ a }}, b={{ b }}
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+var data = {
+    a: 1,
+};
+var vm = new Vue({
+    el: "#vue",
+    data: data,
+    computed: {
+    // 一个计算属性的 getter
+    b: function () {
+      // `this` 指向 vm 实例
+      return isNaN(Number(this.a) + 1)?'无法计算':Number(this.a) + 1;
+    }
+  }
+});
+</script>
+
+</html>

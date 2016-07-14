@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <title>class与style绑定</title>
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://v3.bootcss.com/assets/css/docs.min.css">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js"></script>
+    <style>
+    body {
+        font-family: "Helvetica Neue", Helvetica, Microsoft Yahei, Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif;
+    }
+
+    .class-a {
+        width: 100%;
+        height: 50px;
+        background: #333;
+        color: #fff;
+        line-height: 50px;
+        padding-left: 15px;
+    }
+
+    .class-a:before {
+        content: '这是class-a的样式'
+    }
+
+    .class-b {
+        width: 100%;
+        height: 50px;
+        background: #ff0000;
+        color: #fff;
+        line-height: 50px;
+        padding-left: 15px;
+    }
+
+    .class-b:before {
+        content: '这是class-b的样式'
+    }
+    </style>
+</head>
+
+<body id="vue">
+    <div class="container">
+        <div class="row">
+            <h3>动态改变data.msg的值</h3>
+            <!-- 改变data.msg的值 -->
+            <form>
+                <input class="form-control" v-model="a">
+            </form>
+            <!-- 计算属性 -->
+            <h3>绑定HTML Class</h3>
+            <div class="bs-example">
+                <p>在 v-bind 用于 class 和 style 时，Vue.js 专门增强了它。表达式的结果类型除了字符串之外，还可以是对象或数组。</p>
+                <div v-bind:class="classObject"></div>
+            </div>
+            <h3>绑定内联样式</h3>
+            <div class="bs-example">
+                <p>v-bind:style 的对象语法十分直观——看着非常像 CSS，其实它是一个 JavaScript 对象。CSS 属性名可以用驼峰式（camelCase）或短横分隔命名（kebab-case）</p>
+                <div v-bind:style="styleObject">绑定内联样式</div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+// 感觉对象的方法会更容易理解，不容易出错
+var data = {
+    classObject: {
+        'class-a': true,
+        'class-b': false,
+    },
+    styleObject: {
+        color: 'red',
+        fontSize: '13px',
+    }
+};
+var vm = new Vue({
+    el: "#vue",
+    data: data,
+});
+// console.log(vm);
+</script>
+
+</html>

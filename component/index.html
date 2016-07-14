@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <title>组件开发</title>
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://v3.bootcss.com/assets/css/docs.min.css">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js"></script>
+    <style>
+    body {
+        font-family: "Helvetica Neue", Helvetica, Microsoft Yahei, Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif;
+    }
+    </style>
+</head>
+
+<body id="vue">
+    <div class="container">
+        <div class="row">
+            <h3>组件</h3>
+            <div class="bs-example">
+                <my-component></my-component>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+// 定义
+var MyComponent = Vue.extend({
+    template: '<div>A custom component!</div>'
+});
+
+// 注册
+Vue.component('my-component', MyComponent);
+
+// 创建根实例
+new Vue({
+    el: '#vue'
+});
+</script>
+
+</html>
