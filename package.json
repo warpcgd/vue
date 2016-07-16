@@ -1,0 +1,24 @@
+{
+  "name": "myvue",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "vue": "^1.0.26",
+    "vuex": "^1.0.0-rc.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/warpcgd/vue.git"
+  },
+  "author": "lxc",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/warpcgd/vue/issues"
+  },
+  "homepage": "https://github.com/warpcgd/vue#readme"
+}
